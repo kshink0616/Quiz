@@ -1,0 +1,41 @@
+#body {
+    background-color: aquamarine;
+}
+
+.navigationMenu {
+    background-color: #008080;
+    height: 60px;
+}
+
+#scoreArea {
+    background: #fffacd;
+    width: 100px;
+    height: 30px;
+    margin: 15px 10px 15px 0px;
+    float: right;
+}
+
+#backButton {
+    background-color: #ffffff;
+    width: 45px;
+    height: 35px;
+    margin: 15px 0px 15px 10px;
+}
+
+#retryButton {
+    background-color: #ffffff;
+    width: 47px;
+    height: 35px;
+    margin: 15px 0px 15px 5px;
+}
+
+
+
+#commentaryArea {
+    background-color: #fffacd;
+    width: 900px;
+    height: 400px;
+    margin: 50px auto;
+}
+
+

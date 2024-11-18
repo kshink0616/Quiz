@@ -1,0 +1,50 @@
+#body {
+    background-color: aquamarine;
+}
+#text {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 30px;
+}
+
+
+/*result*/
+#resultBox {
+    background-color: #fffacd;
+    width: 600px;
+    height: 400px;
+    margin: 0 auto;     /*要素を中央揃え*/
+}
+#scoreText {
+    margin-left: 200px;
+    padding-top: 30px;
+    font-size: 20px;
+}
+#scoreDisplay {
+    text-align: center;
+    font-size: 50px;
+}
+#rankText {
+    margin-left: 200px;
+    font-size: 20px;
+}
+#rankDisplay {
+    text-align: center;
+    font-size: 50px;
+}
+
+
+/*button*/
+#buttonArea {
+    margin-top: 60px;
+}
+#retryButton {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+}
+#backButton {
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+}

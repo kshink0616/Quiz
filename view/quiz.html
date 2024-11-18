@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/quiz.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+    <title>QUIZ</title>
+</head>
+<body id="body">
+    <div class="navigationMenu">
+        <div>
+            <button id="backButton" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="戻る">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                </svg>
+            </button>
+            <button id="retryButton" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="リトライ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                </svg>
+            </button>
+            <label id="scoreArea">12345</label>
+        </div>
+    </div>
+
+
+    <div class="container mt-3">
+        <div class="alert alert-warning" role="alert" id="question">
+            Question
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column  w-75">
+                <button type="button" class="btn btn-success mt-4" id="button">button1</button>          <!--flexの仕組みを知るところから再開d-flex justify-content-center-->
+                <button type="button" class="btn btn-success mt-2" id="button">button2</button>         <!--Spacingも-->
+                <button type="button" class="btn btn-success mt-2" id="button">button3</button>
+                <button type="button" class="btn btn-success mt-2" id="button">button4</button>
+            </div>
+        </div>
+
+        <div id="commentaryArea" style="display: none">
+            <div></div>
+        </div>
+    </div>
+
+
+    <script src="../script/questionArray.js"></script>
+    <script src="../script/quiz.js"></script>
+
+    <script>    //ツールチップの初期化
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+
+    <noscript>JavaScriptを有効にしてください</noscript>
+</body>
+</html>
