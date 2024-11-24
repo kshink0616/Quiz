@@ -12,7 +12,7 @@
     <title>ITクイズ</title>
     
 </head>
-<body class="titleBody">
+<body id="titleBody">
     <div id="titleText">ITクイズ</div>
 
     <div class="buttonsBlock">
@@ -22,31 +22,32 @@
   
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Option</h1>
-          </div>
-          <div class="modal-body" style="background-color: #f5f5f5;">
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="scoreConfig">
-              <label class="form-check-label" for="scoreConfig">回答の途中でスコアを表示する</label>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Option</h1>
+                </div>
+                <div class="modal-body" style="background-color: #f5f5f5;">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="scoreConfig">
+                        <label class="form-check-label" for="scoreConfig">回答の途中でスコアを表示する</label>
+                </div>
+                <div class="form-check form-switch mt-3">
+                    <input class="form-check-input" type="checkbox" role="switch" id="rankConfig">
+                    <label class="form-check-label" for="rankConfig">回答の途中でランクを表示する</label>
+                </div>
+                <label class="mt-4">カラーテーマ</label>
+                <select class="form-select form-select-sm" id="colorThemeConfig">
+                    <option value="G">Emerald Green</option>
+                    <option value="B">Sapphire Blue</option>
+                    <option value="R">Ruby Red</option>
+                    <option value="Y">Topaz Yellow</option>
+                </select>
             </div>
-            <div class="form-check form-switch mt-3">
-              <input class="form-check-input" type="checkbox" role="switch" id="rankConfig">
-              <label class="form-check-label" for="rankConfig">回答の途中でランクを表示する</label>
+            <div class="modal-footer">
+                <button id="okButton" type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
             </div>
-            <label class="mt-4">カラーテーマ</label>
-            <select class="form-select form-select-sm" id="colorThemeConfig">
-              <option value="1">green</option>
-              <option value="2">blue</option>
-            </select>
-          </div>
-          <div class="modal-footer">
-            <button id="okButton" type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-          </div>
         </div>
-      </div>
     </div>
 
   

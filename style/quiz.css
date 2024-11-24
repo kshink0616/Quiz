@@ -2,7 +2,7 @@
     background-color: aquamarine;
 }
 
-.navigationMenu {
+#navigationMenu {
     background-color: #008080;
     height: 60px;
 }
@@ -31,11 +31,11 @@
 
 
 
-#commentaryArea {
+/* #commentaryArea {
     background-color: #fffacd;
     width: 900px;
     height: 400px;
     margin: 50px auto;
-}
+} */
 
 

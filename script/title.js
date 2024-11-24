@@ -1,38 +1,53 @@
-(() => {
-    const $start = document.getElementById("startButton");
-    $start.addEventListener("click", () => startQuiz());
+setup();
 
-    function startQuiz() {
-        changeTitleText();
-        setTimeout(function() {
-            window.location.href = "quiz.html";
-        }, 600)
-    }
+const $start = document.getElementById("startButton");
+$start.addEventListener("click", () => startQuiz());
 
-    function changeTitleText() {        //Ready GOを表示
-        const $titleText = document.getElementById("titleText");
-        $titleText.textContent = "Ready GO!!"
-        $titleText.style.color = "red";
-    }
+const $okButton = document.getElementById("okButton");
+$okButton.addEventListener("click", () => configConfirm());
 
 //-----------------
 
-    const $checkTest = document.getElementById("flexSwitchCheckDefault");
-    
+function setup() {
+    const colorIdentifier = sessionStorage.getItem("colorTheme")
+    const $titleBody = document.getElementById("titleBody");
+
+    if(colorIdentifier === "B") {
+        $titleBody.setAttribute("style", "background-color: #add8e6;");
+    } else if (colorIdentifier === "R") {
+        $titleBody.setAttribute("style", "background-color: #d8bfd8;");
+    } else if (colorIdentifier === "Y") {
+        $titleBody.setAttribute("style", "background-color: #eee8aa;");
+    } else {
+        $titleBody.setAttribute("style", "background-color: aquamarine;");
+    }
+}
+
+function startQuiz() {
+    changeTitleText();
+    setTimeout(function() {
+        window.location.href = "quiz.html";
+    }, 600)
+}
+
+function changeTitleText() {        //Ready GOを表示
+    const $titleText = document.getElementById("titleText");
+    $titleText.textContent = "Ready GO!!"
+    $titleText.style.color = "red";
+}
+
+function configConfirm() {
+    const $scoreConfig = document.getElementById("scoreConfig");
+    let scoreDisplayFlag = $scoreConfig.checked;
+
+    const $rankConfig = document.getElementById("rankConfig");
+    let rankDisplayFlag = $rankConfig.checked;
 
     const $colorThemeConfig = document.getElementById("colorThemeConfig");
-    console.log($colorThemeConfig);
+    let colorTheme = $colorThemeConfig.value;
 
-    $colorThemeConfig.addEventListener("change", () => {
-        console.log("123");
-    })
-
-    
-
-
-    //okボタンを押すと設定を反映する
-    //まずは、selectで選ばれているものを取得する方法から探る
-
-
-
-}) ();
+    sessionStorage.setItem("scoreDisplayFlag", scoreDisplayFlag);
+    sessionStorage.setItem("rankDisplayFlag", rankDisplayFlag);
+    sessionStorage.setItem("colorTheme", colorTheme);
+    setup();
+}

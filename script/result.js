@@ -1,3 +1,6 @@
+setup();
+settingResult();
+
 const $retryButton = document.getElementById("retryButton");
 $retryButton.addEventListener("click", () => {
     //window.history.back();
@@ -8,7 +11,22 @@ $backButton.addEventListener("click", () => {
     window.location.href = "title.html";
 })
 
-settingResult();
+
+function setup() {
+    const colorIdentifier = sessionStorage.getItem("colorTheme")
+    const $body = document.getElementById("body");
+
+    if(colorIdentifier === "B") {
+        $body.setAttribute("style", "background-color: #add8e6;");
+    } else if (colorIdentifier === "R") {
+        $body.setAttribute("style", "background-color: #d8bfd8;");
+    } else if (colorIdentifier === "Y") {
+        $body.setAttribute("style", "background-color: #eee8aa;");
+    } else {
+        $body.setAttribute("style", "background-color: aquamarine;");
+    }
+}
+
 
 function settingResult() {
     const score = sessionStorage.getItem("score");

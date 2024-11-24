@@ -3,6 +3,7 @@ const $button = document.querySelectorAll("#button");
 const buttonLength = $button.length;
 const questionMax = 10;
 
+setup();
 let questionsArray = Sort("QUESTIONS");
 let questionsIndex = 0;
 let score = 0;
@@ -39,6 +40,49 @@ $backbutton.addEventListener("click", () => {
         window.location.href = "../view/title.html";        
     }
 })
+
+function setup() {
+    const colorIdentifier = sessionStorage.getItem("colorTheme")
+    const $body = document.getElementById("body");
+    const $navigationMenu = document.getElementById("navigationMenu");
+    
+    if(colorIdentifier === "B") {
+        $body.setAttribute("style", "background-color: #add8e6;");
+        $navigationMenu.setAttribute("style", "background-color: #000080;");
+        buttonColorChange("B");
+    } else if (colorIdentifier === "R") {
+        $body.setAttribute("style", "background-color: #d8bfd8;");
+        $navigationMenu.setAttribute("style", "background-color: #dc143c;");
+        buttonColorChange("R");
+    } else if (colorIdentifier === "Y") {
+        $body.setAttribute("style", "background-color: #eee8aa;");
+        $navigationMenu.setAttribute("style", "background-color: #d2691e;");
+        buttonColorChange("Y");
+    } else {
+        $body.setAttribute("style", "background-color: aquamarine;");
+        $navigationMenu.setAttribute("style", "background-color: #008080;");
+        buttonColorChange("G");
+    }
+}
+
+function buttonColorChange(color) {
+    for(let buttonIndex = 0; buttonIndex < $button.length; buttonIndex++) {
+        for(let classIndex = 0; classIndex < $button[buttonIndex].classList.length; classIndex++) {
+            if($button[buttonIndex].classList[classIndex].startsWith("btn-")){
+                $button[buttonIndex].classList.remove($button[buttonIndex].classList[classIndex]);
+                if(color === "B") {
+                    $button[buttonIndex].classList.add("btn-primary");
+                } else if (color === "R") {
+                    $button[buttonIndex].classList.add("btn-danger");
+                } else if (color === "Y") {
+                    $button[buttonIndex].classList.add("btn-warning");
+                } else {
+                    $button[buttonIndex].classList.add("btn-success");
+                }           
+            }
+        }
+    }
+}
 
 //問題のセッティング
 function questionSetting() {
@@ -93,18 +137,18 @@ function Sort(type) {
 }
 
 /*-------解説部分の表示(Test)--------*/
-const $body = document.getElementById("body").addEventListener("keydown", (e) => {
-    const $commentaryArea = document.querySelector("#commentaryArea");
-    if(e.key === "Enter") {
+// const $body = document.getElementById("body").addEventListener("keydown", (e) => {
+//     const $commentaryArea = document.querySelector("#commentaryArea");
+//     if(e.key === "Enter") {
         
-        let areaAttr = $commentaryArea.getAttribute("style");
+//         let areaAttr = $commentaryArea.getAttribute("style");
 
-        if(areaAttr === "display: none") {
-            $commentaryArea.setAttribute("style", "display: block");
-        } else if(areaAttr != "display: none") {
-            $commentaryArea.setAttribute("style", "display: none");
-        }
-    }
-})
+//         if(areaAttr === "display: none") {
+//             $commentaryArea.setAttribute("style", "display: block");
+//         } else if(areaAttr != "display: none") {
+//             $commentaryArea.setAttribute("style", "display: none");
+//         }
+//     }
+// })
 
 
