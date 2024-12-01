@@ -26,62 +26,44 @@ for(let i = 0; i < buttonLength; i++) {
 
 //Retry処理
 const $retryButton = document.getElementById("retryButton");
-$retryButton.addEventListener("click", () => {
-    if(window.confirm("リトライしますか？\n(途中まで回答した内容は失われます)") === true) {
-        window.location.reload();
-    }
-})
+$retryButton.addEventListener("click", () => retryButtonHandler());
 
 //Back処理
 const $backbutton = document.getElementById("backButton");
-$backbutton.addEventListener("click", () => {
-    if(window.confirm("タイトル画面に戻りますか？\n(途中まで回答した内容は失われます)") === true) {
-        //history.back();
-        window.location.href = "../view/title.html";        
-    }
-})
+$backbutton.addEventListener("click", () => backButtonHandler());
 
 function setup() {
-    const colorIdentifier = sessionStorage.getItem("colorTheme")
+    const colorIdentifier = sessionStorage.getItem("colorTheme");
     const $body = document.getElementById("body");
     const $navigationMenu = document.getElementById("navigationMenu");
     
     if(colorIdentifier === "B") {
         $body.setAttribute("style", "background-color: #add8e6;");
         $navigationMenu.setAttribute("style", "background-color: #000080;");
-        buttonColorChange("B");
+        buttonColorChange("btn-primary");
     } else if (colorIdentifier === "R") {
         $body.setAttribute("style", "background-color: #d8bfd8;");
         $navigationMenu.setAttribute("style", "background-color: #dc143c;");
-        buttonColorChange("R");
+        buttonColorChange("btn-danger");
     } else if (colorIdentifier === "Y") {
         $body.setAttribute("style", "background-color: #eee8aa;");
         $navigationMenu.setAttribute("style", "background-color: #d2691e;");
-        buttonColorChange("Y");
+        buttonColorChange("btn-warning");
     } else {
         $body.setAttribute("style", "background-color: aquamarine;");
         $navigationMenu.setAttribute("style", "background-color: #008080;");
-        buttonColorChange("G");
+        buttonColorChange("btn-success");
     }
 }
 
-function buttonColorChange(color) {
-    for(let buttonIndex = 0; buttonIndex < $button.length; buttonIndex++) {
-        for(let classIndex = 0; classIndex < $button[buttonIndex].classList.length; classIndex++) {
-            if($button[buttonIndex].classList[classIndex].startsWith("btn-")){
-                $button[buttonIndex].classList.remove($button[buttonIndex].classList[classIndex]);
-                if(color === "B") {
-                    $button[buttonIndex].classList.add("btn-primary");
-                } else if (color === "R") {
-                    $button[buttonIndex].classList.add("btn-danger");
-                } else if (color === "Y") {
-                    $button[buttonIndex].classList.add("btn-warning");
-                } else {
-                    $button[buttonIndex].classList.add("btn-success");
-                }           
+function buttonColorChange(buttonColor) {
+    $button.forEach(function(value, index, array) {
+        array[index].classList.forEach(function(value, index, array) {
+            if(value.startsWith("btn-")){
+                array.replace(value, buttonColor);
             }
-        }
-    }
+        })
+    })
 }
 
 //問題のセッティング
@@ -105,6 +87,19 @@ function canQuestionSetting(questionsIndex) {
             sessionStorage.setItem("score", score);
             window.location.href = "result.html";
         }
+    }
+}
+
+function retryButtonHandler() {
+    if(window.confirm("リトライしますか？\n(途中まで回答した内容は失われます)") === true) {
+        window.location.reload();
+    }
+}
+
+function backButtonHandler() {
+    if(window.confirm("タイトル画面に戻りますか？\n(途中まで回答した内容は失われます)") === true) {
+        //history.back();
+        window.location.href = "../view/title.html";        
     }
 }
 
