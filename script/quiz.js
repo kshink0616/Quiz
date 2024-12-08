@@ -7,6 +7,7 @@ setup();
 let questionsArray = Sort("QUESTIONS");
 let questionsIndex = 0;
 let score = 0;
+displayRankAndScore();
 questionSetting(questionsIndex);
 
 //ボタン押下時の判定
@@ -20,6 +21,7 @@ for(let i = 0; i < buttonLength; i++) {
         }
         
         questionsIndex++;
+        rankAndScoreSetting(score);
         canQuestionSetting(questionsIndex);
     })
 }
@@ -64,6 +66,52 @@ function buttonColorChange(buttonColor) {
             }
         })
     })
+}
+
+function displayRankAndScore() {
+    const rankDisplayFlag = sessionStorage.getItem("rankDisplayFlag");
+    const scoreDisplayFlag = sessionStorage.getItem("scoreDisplayFlag");
+
+    const areaControl = [
+        {
+            $area: document.getElementById("rankArea"),
+            displayFlag: rankDisplayFlag
+        }, 
+        {
+            $area: document.getElementById("scoreArea"),
+            displayFlag: scoreDisplayFlag
+        }
+    ]
+
+    for(let i = 0; i < areaControl.length; i++) {
+        if(areaControl[i].displayFlag == "true") {
+            areaControl[i].$area.setAttribute("style", "display: block");
+        } else {
+            areaControl[i].$area.setAttribute("style", "display: none");
+        }
+    }
+
+    rankAndScoreSetting(score);
+}
+
+function rankAndScoreSetting(score) {
+    const $rank = document.getElementById("rankText");
+    const $score = document.getElementById("scoreText");
+    
+    if(score === 10) {
+        $rank.textContent = "RANK:  S";
+    } else if(score >= 8) {
+        $rank.textContent = "RANK:  A";
+    } else if(score >= 5) {
+        $rank.textContent = "RANK:  B";
+    } else if(score >= 3) {
+        $rank.textContent = "RANK:  C";
+    } else if(score >= 1) {
+        $rank.textContent = "RANK:  D";
+    } else if(score === 0){
+        $rank.textContent = "RANK:  E";
+    }
+    $score.textContent = "SCORE:  " + score;
 }
 
 //問題のセッティング

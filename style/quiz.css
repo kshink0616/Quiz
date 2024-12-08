@@ -7,12 +7,28 @@
     height: 60px;
 }
 
+#rankArea {
+    background: #fffacd;
+    width: 100px;
+    height: 30px;
+    margin: 15px 10px 15px 0px;
+    float: right;
+}
+
+#rankText {
+    text-align: center;
+}
+
 #scoreArea {
     background: #fffacd;
     width: 100px;
     height: 30px;
     margin: 15px 10px 15px 0px;
     float: right;
+}
+
+#scoreText {
+    text-align: center;
 }
 
 #backButton {
