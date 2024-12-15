@@ -1,39 +1,48 @@
-const $question = document.getElementById("question");
 const $button = document.querySelectorAll("#button");
-const buttonLength = $button.length;
-const questionMax = 10;
 
-setup();
+const $retryButton = document.getElementById("retryButton");        //Retry処理
+$retryButton.addEventListener("click", () => retryButtonHandler());
+
+const $backbutton = document.getElementById("backButton");          //Back処理
+$backbutton.addEventListener("click", () => backButtonHandler());
+
+
+const buttonLength = $button.length;
+for(let i = 0; i < buttonLength; i++) {
+    $button[i].addEventListener("click", (e) => { answerJudge(e) });
+}
+
+const $question = document.getElementById("question");
+const questionMax = 10;
+let questions = null;
 let questionsArray = Sort("QUESTIONS");
 let questionsIndex = 0;
 let score = 0;
+
+
+setup();
 displayRankAndScore();
-questionSetting(questionsIndex);
+getQuestions();
 
-//ボタン押下時の判定
-for(let i = 0; i < buttonLength; i++) {
-    $button[i].addEventListener("click", (e) => {
-        if(e.target.textContent === questions[questionsArray[questionsIndex]].correct) {
-            window.alert("正解");
-            score++;
-        } else {
-            window.alert("不正解");
+async function getQuestions() {
+    try {
+        const res = await fetch("../questionArray.json");
+
+        if(!res.ok) {
+            throw new Error("Failure get json.");
         }
-        
-        questionsIndex++;
-        rankAndScoreSetting(score);
-        canQuestionSetting(questionsIndex);
-    })
+
+        const jsonData = await res.json();
+        questions = jsonData.questions;
+
+        //console.log(questions[0].correct);
+        questionSetting(questionsIndex);
+    } catch (error) {
+        console.error("NG");
+    }
+    const res = await fetch("../questionArray.json");
 }
-
-//Retry処理
-const $retryButton = document.getElementById("retryButton");
-$retryButton.addEventListener("click", () => retryButtonHandler());
-
-//Back処理
-const $backbutton = document.getElementById("backButton");
-$backbutton.addEventListener("click", () => backButtonHandler());
-
+    
 function setup() {
     const colorIdentifier = sessionStorage.getItem("colorTheme");
     const $body = document.getElementById("body");
@@ -114,6 +123,19 @@ function rankAndScoreSetting(score) {
     $score.textContent = "SCORE:  " + score;
 }
 
+function answerJudge(e) {
+    if(e.target.textContent === questions[questionsArray[questionsIndex]].correct) {
+        window.alert("正解");
+        score++;
+    } else {
+        window.alert("不正解");
+    }
+    
+    questionsIndex++;
+    rankAndScoreSetting(score);
+    canQuestionSetting(questionsIndex);
+}
+
 //問題のセッティング
 function questionSetting() {
     $question.textContent = "問" + (questionsIndex + 1) + ": " + questions[questionsArray[questionsIndex]].question;
@@ -178,20 +200,3 @@ function Sort(type) {
 
     return resultArray;
 }
-
-/*-------解説部分の表示(Test)--------*/
-// const $body = document.getElementById("body").addEventListener("keydown", (e) => {
-//     const $commentaryArea = document.querySelector("#commentaryArea");
-//     if(e.key === "Enter") {
-        
-//         let areaAttr = $commentaryArea.getAttribute("style");
-
-//         if(areaAttr === "display: none") {
-//             $commentaryArea.setAttribute("style", "display: block");
-//         } else if(areaAttr != "display: none") {
-//             $commentaryArea.setAttribute("style", "display: none");
-//         }
-//     }
-// })
-
-
