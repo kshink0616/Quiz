@@ -73,8 +73,22 @@
     height: 40px;
     font-size: 20px;
 }
+@media screen and (max-width: 480px) {
+    #retryButton {
+        width: 100px;
+        height: 40px;
+        font-size: 17px;
+    }    
+}
 #backButton {
     width: 100px;
     height: 40px;
     font-size: 20px;
+}
+@media screen and (max-width: 480px) {
+    #backButton {
+        width: 100px;
+        height: 40px;
+        font-size: 17px;
+    }    
 }
