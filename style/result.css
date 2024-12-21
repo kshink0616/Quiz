@@ -6,6 +6,13 @@
     font-size: 50px;
     margin-top: 30px;
 }
+@media screen and (max-width: 480px) {
+    #text {
+        text-align: center;
+        font-size: 35px;
+        margin-top: 30px;
+    }    
+}
 
 
 /*result*/
@@ -15,18 +22,41 @@
     height: 400px;
     margin: 0 auto;     /*要素を中央揃え*/
 }
+@media screen and (max-width: 480px) {
+    #resultBox {
+        background-color: #fffacd;
+        width: 250px;
+        height: 400px;
+        margin: 0 auto;
+    }   
+}
+
 #scoreText {
     margin-left: 200px;
     padding-top: 30px;
     font-size: 20px;
 }
+@media screen and (max-width: 480px) {
+    #scoreText {
+        margin-left: 35px;
+        padding-top: 30px;
+        font-size: 20px;
+    }   
+}
 #scoreDisplay {
     text-align: center;
     font-size: 50px;
 }
+
 #rankText {
     margin-left: 200px;
     font-size: 20px;
+}
+@media screen and (max-width: 480px) {
+    #rankText {
+        margin-left: 35px;
+        font-size: 20px;
+    }
 }
 #rankDisplay {
     text-align: center;

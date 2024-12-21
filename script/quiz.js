@@ -35,34 +35,32 @@ async function getQuestions() {
         const jsonData = await res.json();
         questions = jsonData.questions;
 
-        //console.log(questions[0].correct);
         questionSetting(questionsIndex);
     } catch (error) {
-        console.error("NG");
+        console.error(error);
     }
-    const res = await fetch("../questionArray.json");
 }
     
 function setup() {
     const colorIdentifier = sessionStorage.getItem("colorTheme");
     const $body = document.getElementById("body");
-    const $navigationMenu = document.getElementById("navigationMenu");
+    const $navigationBar = document.getElementById("navigationBar");
     
     if(colorIdentifier === "B") {
         $body.setAttribute("style", "background-color: #add8e6;");
-        $navigationMenu.setAttribute("style", "background-color: #000080;");
+        $navigationBar.setAttribute("style", "background-color: #000080;");
         buttonColorChange("btn-primary");
     } else if (colorIdentifier === "R") {
         $body.setAttribute("style", "background-color: #d8bfd8;");
-        $navigationMenu.setAttribute("style", "background-color: #dc143c;");
+        $navigationBar.setAttribute("style", "background-color: #dc143c;");
         buttonColorChange("btn-danger");
     } else if (colorIdentifier === "Y") {
         $body.setAttribute("style", "background-color: #eee8aa;");
-        $navigationMenu.setAttribute("style", "background-color: #d2691e;");
+        $navigationBar.setAttribute("style", "background-color: #d2691e;");
         buttonColorChange("btn-warning");
     } else {
         $body.setAttribute("style", "background-color: aquamarine;");
-        $navigationMenu.setAttribute("style", "background-color: #008080;");
+        $navigationBar.setAttribute("style", "background-color: #008080;");
         buttonColorChange("btn-success");
     }
 }

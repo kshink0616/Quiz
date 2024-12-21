@@ -2,7 +2,7 @@
     background-color: aquamarine;
 }
 
-#navigationMenu {
+#navigationBar {
     background-color: #008080;
     height: 60px;
 }
@@ -46,12 +46,17 @@
 }
 
 
-
-/* #commentaryArea {
-    background-color: #fffacd;
-    width: 900px;
-    height: 400px;
-    margin: 50px auto;
-} */
-
-
+@media screen and (max-width: 480px) {
+    #question {
+        font-size: 13px;
+    }
+}
+#button {
+    margin-top: 20px;
+}
+@media screen and (max-width: 480px) {
+    #button {
+        margin-top: 40px;
+        text-align: left;
+    }
+}

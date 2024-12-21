@@ -7,9 +7,16 @@
     font-size: 100px;
     text-align: center;
 }
+@media screen and (max-width: 480px) {
+    #titleText {
+        margin-top: 100px;  
+        font-size: 70px;
+        text-align: center;
+    }   
+}
 
 .buttonsBlock {
-    margin-top: 50px;
+    margin-top: 75px;
     text-align: center;
 }
 
@@ -23,5 +30,6 @@
     width: 200px;
     height: 50px;
     font-size: 30px;
+    margin-top: 30px;
 }
 
