@@ -1,10 +1,12 @@
 ## 概要
 ・IT分野のクイズゲーム
 
-## 環境
-・使用言語: HTML, CSS, JavaScript
+## 技術・環境
+・使用言語: HTML5, CSS3, JavaScript
 
-・検証済みブラウザ: Chrome
+・フレームワーク: Bootstrap v5.3
+
+・検証済みブラウザ: Google Chrome, Microsoft Edge
 
 ## 利用方法
 ・以下のURLからアクセス
