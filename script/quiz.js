@@ -1,9 +1,9 @@
 const $button = document.querySelectorAll("#button");
 
-const $retryButton = document.getElementById("retryButton");        //Retry処理
+const $retryButton = document.getElementById("retryButton");
 $retryButton.addEventListener("click", () => retryButtonHandler());
 
-const $backbutton = document.getElementById("backButton");          //Back処理
+const $backbutton = document.getElementById("backButton");
 $backbutton.addEventListener("click", () => backButtonHandler());
 
 
@@ -14,11 +14,13 @@ for(let i = 0; i < buttonLength; i++) {
 
 const $question = document.getElementById("question");
 const questionMax = 10;
+const answerMax = 4;
+
 let questions = null;
-let questionsArray = Sort("QUESTIONS");
+let questionsCount = 0;
+let questionsArray = 0;
 let questionsIndex = 0;
 let score = 0;
-
 
 setup();
 displayRankAndScore();
@@ -34,7 +36,9 @@ async function getQuestions() {
 
         const jsonData = await res.json();
         questions = jsonData.questions;
+        questionsCount = jsonData.questions.length;
 
+        questionsArray = randomize(questionsCount);
         questionSetting(questionsIndex);
     } catch (error) {
         console.error(error);
@@ -134,11 +138,10 @@ function answerJudge(e) {
     canQuestionSetting(questionsIndex);
 }
 
-//問題のセッティング
 function questionSetting() {
     $question.textContent = "問" + (questionsIndex + 1) + ": " + questions[questionsArray[questionsIndex]].question;
 
-    let answerArray = Sort("ANSWER");
+    let answerArray = randomize(answerMax);
     let buttonIndex = 0;
     while(buttonIndex < buttonLength) {
         $button[answerArray[buttonIndex]].textContent = questions[questionsArray[questionsIndex]].answer[buttonIndex];
@@ -146,7 +149,6 @@ function questionSetting() {
     }
 }
 
-//セッティングできるか判定
 function canQuestionSetting(questionsIndex) {
     if(questionsIndex < questionMax) {
         questionSetting(questionsIndex);
@@ -171,19 +173,15 @@ function backButtonHandler() {
     }
 }
 
-//ランダムで並び順を生成して返却する関数(20問対応)
-function Sort(type) {
+function randomize(len) {
     let array = [];
     let arrayLength = 0;
     let resultArray = [];
 
-    if(type === "QUESTIONS") {
-        array = [
-            0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-            10, 11, 12, 13, 14, 15, 16, 17, 18, 19
-        ];
-    } else {   //type = ANSWER
-        array = [0, 1, 2, 3];
+    if(len > 0) {
+        for(let i = 0; i < len; i++) {
+            array.push(i);
+        }
     }
 
     arrayLength = array.length;
